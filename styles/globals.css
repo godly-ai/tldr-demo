@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.response-wrapper a {
+  color: #000;
+  text-decoration: underline;
+}
