@@ -17,6 +17,7 @@ export default async function Handler(
   const config = new Configuration({
     accessToken: process.env.GODLY_API_KEY,
   });
+  console.log("@@@@@@@@@@@", config);
   const godlyApi = new GodlyApi(config);
 
   await Promise.all(

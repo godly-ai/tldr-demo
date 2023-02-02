@@ -10,8 +10,11 @@ export default async function Handler(
   try {
     const prompt = req.query.prompt as string;
     const config = new Configuration({
+      apiKey: process.env.GPT3_API_KEY,
       accessToken: process.env.GODLY_API_KEY,
     });
+    console.log("@@@@@@@@@@@", config);
+
     const godlyApi = new GodlyApi(config);
 
     const engineeredPrompt = `Here are some items from the TLDR email newsletter:\n[context]\n Use all the relevant items from the newsletter to answer the user question and include links to references in this format <a href="https://LINK">Short natural text to link</a>. Don't mention reading times.\n\nQuestion:\n${prompt}.\nAnswer:`;
@@ -33,7 +36,7 @@ export default async function Handler(
     };
 
     res.status(200).send(resonse);
-  } catch (error) {
-    console.log(error);
+  } catch (error: any) {
+    console.log(error.message);
   }
 }
