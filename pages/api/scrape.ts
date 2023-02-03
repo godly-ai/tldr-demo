@@ -30,16 +30,21 @@ export default async function Handler(
           year: "numeric",
         });
 
-        godlyApi.createContextItem("cld9w13b40000kz084djane5r", 800, "split", {
-          value: `{
+        godlyApi.createContextItem(
+          process.env.GODLY_PROJECT_ID!,
+          800,
+          "split",
+          {
+            value: `{
   "title": "${item.title}",
   "text": "${item.text}",
   "link": "${item.link}",
   "date": "${item.date}"
 }`,
-          reference: item.link,
-          tags: [item.date, month, year],
-        });
+            reference: item.link,
+            tags: [item.date, month, year],
+          }
+        );
       })
   );
 

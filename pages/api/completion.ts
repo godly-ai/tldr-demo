@@ -17,7 +17,7 @@ export default async function Handler(
     const engineeredPrompt = `Here are some items from the TLDR email newsletter:\n[context]\n Use all the relevant items from the newsletter to answer the user question and include links to references in this format <a href="https://LINK">Short natural text to link</a>. Don't mention reading times.\n\nQuestion:\n${prompt}.\nAnswer:`;
 
     const { data } = await godlyApi.completionWithContext(
-      "cld9w13b40000kz084djane5r",
+      process.env.GODLY_PROJECT_ID!,
       {
         prompt: engineeredPrompt,
         context_search_prompt: prompt,
